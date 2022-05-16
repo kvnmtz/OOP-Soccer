@@ -1,5 +1,9 @@
 #include "field.h"
 
+#include <iostream>
+
+#include "team.h"
+
 CField::CField(const int width, const int height) : Width(width), Height(height)
 {
 	// TODO: Choose random player
@@ -16,14 +20,14 @@ int CField::GetHeight() const
 	return Height;
 }
 
-std::array<CTeam*, 2>& CField::GetTeams()
+std::vector<CTeam*>& CField::GetTeams()
 {
 	return Teams;
 }
 
 void CField::AddTeam(CTeam* team)
 {
-	Teams.assign(team);
+	Teams.emplace_back(team);
 }
 
 CTeam* CField::GetEnemyTeam(CTeam* team) const

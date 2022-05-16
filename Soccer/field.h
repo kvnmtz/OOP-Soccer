@@ -1,6 +1,6 @@
 #pragma once
 
-#include <array>
+#include <vector>
 
 /*-----------------------------------------------------------------------------
 	Spielfeld
@@ -12,7 +12,7 @@ class CPlayer;
 class CField
 {
 	int Width, Height;
-	std::array<CTeam*, 2> Teams;
+	std::vector<CTeam*> Teams;
 	CPlayer* PlayerWithBall;
 
 public:
@@ -22,7 +22,7 @@ public:
 
 	int GetHeight() const;
 
-	std::array<CTeam*, 2>& GetTeams();
+	std::vector<CTeam*>& GetTeams();
 
 	void AddTeam(CTeam* team);
 

@@ -28,6 +28,8 @@ public:
 	 */
 	void Pass(const CPlayer& target);
 
+	std::string GetName();
+
 	SPosition GetPosition() const;
 
 	CTeam* GetTeam() const;

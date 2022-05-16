@@ -7,7 +7,10 @@
 int main()
 {
 	const auto field = new CField(130, 100);
-	const auto teams = std::array<CTeam*, 2> { new CTeam("FC Bayern München", field), new CTeam("Borussia Dortmund", field) };
+    field->AddTeam(new CTeam("FC Bayern München", field));
+    field->AddTeam(new CTeam("Borussia Dortmund", field));
+
+	const auto teams = field->GetTeams();
 
     teams[0]->AddPlayer(new CPlayer("Lewandowski", teams[0]));
     teams[0]->AddPlayer(new CPlayer("Müller", teams[0]));
@@ -32,6 +35,12 @@ int main()
     teams[1]->AddPlayer(new CPlayer("Hummels", teams[1]));
     teams[1]->AddPlayer(new CPlayer("Schmelzer", teams[1]));
     teams[1]->SetGoalie(new CPlayer("Kobel", teams[1]));
+
+	const auto test = teams[0]->GetPlayers()[5];
+    std::cout << test->GetName() << std::endl;
+    std::cout << test->GetPosition().X << ", " << test->GetPosition().Y << std::endl;
+    std::cout << test->GetNearestAlly()->GetName() << std::endl;
+    std::cout << test->GetNearestAlly()->GetPosition().X << ", " << test->GetNearestAlly()->GetPosition().Y << std::endl;
 
 	for (const auto team : teams)
 	{

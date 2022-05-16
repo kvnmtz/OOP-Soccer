@@ -11,14 +11,14 @@ std::string CTeam::GetName()
 	return Name;
 }
 
-std::array<CPlayer*, 10> CTeam::GetPlayers() const
+std::vector<CPlayer*> CTeam::GetPlayers() const
 {
 	return Players;
 }
 
 void CTeam::AddPlayer(CPlayer* player)
 {
-	Players.assign(player);
+	Players.emplace_back(player);
 }
 
 CPlayer* CTeam::GetGoalie() const

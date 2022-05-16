@@ -1,7 +1,7 @@
 #pragma once
 
-#include <array>
 #include <string>
+#include <vector>
 
 class CField;
 class CPlayer;
@@ -9,7 +9,7 @@ class CPlayer;
 class CTeam
 {
 	std::string Name;
-	std::array<CPlayer*, 10> Players;
+	std::vector<CPlayer*> Players;
 	CPlayer* Goalie;
 	CField* Field;
 
@@ -18,7 +18,7 @@ public:
 
 	std::string GetName();
 
-	std::array<CPlayer*, 10> GetPlayers() const;
+	std::vector<CPlayer*> GetPlayers() const;
 
 	void AddPlayer(CPlayer* player);
 

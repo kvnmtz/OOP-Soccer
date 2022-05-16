@@ -24,6 +24,11 @@ void CPlayer::Pass(const CPlayer& target)
 	}
 }
 
+std::string CPlayer::GetName()
+{
+	return Name;
+}
+
 SPosition CPlayer::GetPosition() const
 {
 	return Position;

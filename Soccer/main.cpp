@@ -2,10 +2,13 @@
 
 #include "field.h"
 #include "player.h"
+#include "random.hpp"
 #include "team.h"
 
 int main()
 {
+    Random::Initialize();
+
     const auto field = new CField(130, 100);
     field->AddTeam(new CTeam("FC Bayern München", field));
     field->AddTeam(new CTeam("Borussia Dortmund", field));

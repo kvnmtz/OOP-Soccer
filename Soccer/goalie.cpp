@@ -1,7 +1,5 @@
 #include "goalie.h"
 
-#include <utility>
-
 #include "random.hpp"
 #include "team.h"
 

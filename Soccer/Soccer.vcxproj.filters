@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="field.cpp">
+      <Filter>field</Filter>
+    </ClCompile>
+    <ClCompile Include="player.cpp">
+      <Filter>player</Filter>
+    </ClCompile>
+    <ClCompile Include="team.cpp">
+      <Filter>team</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="field">
+      <UniqueIdentifier>{557e34a0-e836-4bc7-9dee-98ddc1f40fe6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="player">
+      <UniqueIdentifier>{73f0663b-ce76-47e0-b5b3-5d2589de58fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="utils">
+      <UniqueIdentifier>{c1e38b4a-691c-4154-89d4-9c6fc25006a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="team">
+      <UniqueIdentifier>{5d7df7dd-7071-415e-8f98-920e8e89e88e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="field.h">
+      <Filter>field</Filter>
+    </ClInclude>
+    <ClInclude Include="player.h">
+      <Filter>player</Filter>
+    </ClInclude>
+    <ClInclude Include="random.hpp">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="team.h">
+      <Filter>team</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

@@ -6,11 +6,11 @@
 
 int main()
 {
-	const auto field = new CField(130, 100);
+    const auto field = new CField(130, 100);
     field->AddTeam(new CTeam("FC Bayern München", field));
     field->AddTeam(new CTeam("Borussia Dortmund", field));
 
-	const auto teams = field->GetTeams();
+    const auto teams = field->GetTeams();
 
     teams[0]->AddPlayer(new CPlayer("Lewandowski", teams[0]));
     teams[0]->AddPlayer(new CPlayer("Müller", teams[0]));

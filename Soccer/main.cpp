@@ -33,5 +33,14 @@ int main()
     teams[1]->AddPlayer(new CPlayer("Schmelzer", teams[1]));
     teams[1]->SetGoalie(new CPlayer("Kobel", teams[1]));
 
+	for (const auto team : teams)
+	{
+		for (const auto player : team->GetPlayers())
+		{
+            delete player;
+		}
+        delete team;
+	}
 
+    delete field;
 }

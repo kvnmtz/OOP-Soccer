@@ -26,7 +26,7 @@ public:
      * \brief Passt den Ball zu einem Mitspieler im selben Team, Pass wird mit Wahrscheinlichkeit von 30% von einem zufälligem Gegner abgefangen
      * \param target Spieler, der den Ball erhalten soll
      */
-    void Pass(const CPlayer& target);
+    void TryPass(const CPlayer* target);
 
     std::string GetName();
 
@@ -42,5 +42,7 @@ public:
 
     float GetDistanceToPlayer(const CPlayer* player) const;
     
-    bool TryShootGoal();
+    void TryShootGoal() const;
+
+    void Play();
 };

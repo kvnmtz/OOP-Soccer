@@ -1,6 +1,9 @@
 #include "player.h"
 
+#include <iostream>
+
 #include "field.h"
+#include "goalie.h"
 #include "random.hpp"
 #include "team.h"
 
@@ -9,18 +12,20 @@ CPlayer::CPlayer(std::string name, CTeam* team) : Name(std::move(name)), Team(te
     Position = { Random::GetRandomNumber(0, GetField()->GetWidth()), Random::GetRandomNumber(0, GetField()->GetHeight()) };
 }
 
-void CPlayer::Pass(const CPlayer& target)
+void CPlayer::TryPass(const CPlayer* target)
 {
-    if (Random::Success(30))
-    {
-        /* Gegnerspieler hat den Ball abgefangen */
-        const auto randomEnemy = target.GetEnemyTeam()->GetPlayers()[Random::GetRandomNumber(0, 9)];
-        GetField()->SetPlayerWithBall(randomEnemy);
-    }
-    else
+    std::cout << Name << " passt zu " << target->Name << "..." << std::endl;
+    if (Random::Success(70))
     {
         /* Pass erfolgreich */
         GetField()->SetPlayerWithBall(GetNearestAlly());
+    }
+    else
+    {
+        /* Gegnerspieler hat den Ball abgefangen */
+        const auto randomEnemy = target->GetEnemyTeam()->GetRandomPlayerOnField();
+        GetField()->SetPlayerWithBall(randomEnemy);
+        std::cout << randomEnemy->Name << " hat den Ball abgefangen!" << std::endl;
     }
 }
 
@@ -76,4 +81,43 @@ float CPlayer::GetDistanceToPlayer(const CPlayer* player) const
     const auto diffX = Position.X - player->Position.X;
     const auto diffY = Position.Y - player->Position.Y;
     return sqrtf(static_cast<float>(diffX * diffX + diffY * diffY));
+}
+
+void CPlayer::TryShootGoal() const
+{
+    if (Random::Success(20))
+    {
+        /* Torschuss ging nicht ins Aus */
+        if (GetEnemyTeam()->GetGoalie()->TryParry())
+        {
+            /* Torschuss abgewehrt */
+            std::cout << GetEnemyTeam()->GetGoalie()->GetName() << " hat den Torschuss von " << Name << " abgewehrt!" << std::endl;
+        }
+        else
+        {
+            /* Torschuss erfolgreich */
+            std::cout << "Der Torschuss von " << Name << " war erfolgreich! Tooooor!" << std::endl;
+            Team->AddGoal();
+        }
+    }
+    else
+    {
+        /* Torschuss ging ins Aus */
+        std::cout << "Der Torschuss von " << Name << " ging ins Aus!" << std::endl;
+    }
+
+    /* In jedem Fall erhält ein zufälliger Gegner den Ball */
+    GetField()->SetPlayerWithBall(GetEnemyTeam()->GetRandomPlayerOnField());
+}
+
+void CPlayer::Play()
+{
+    if (Random::Success(90))
+    {
+        TryPass(GetNearestAlly());
+    }
+    else
+    {
+        TryShootGoal();
+    }
 }

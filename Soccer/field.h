@@ -13,7 +13,7 @@ class CField
 {
     int Width, Height;
     std::vector<CTeam*> Teams;
-    CPlayer* PlayerWithBall;
+    CPlayer* PlayerWithBall = nullptr;
 
 public:
     CField(int width, int height);
@@ -35,4 +35,8 @@ public:
     CPlayer* GetPlayerWithBall() const;
 
     void SetPlayerWithBall(CPlayer* player);
+
+    CPlayer* GetRandomPlayerOnField() const;
+
+    void PlayGame();
 };

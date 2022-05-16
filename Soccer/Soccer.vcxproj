@@ -140,12 +140,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="field.cpp" />
+    <ClCompile Include="goalie.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="team.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="field.h" />
+    <ClInclude Include="goalie.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="random.hpp" />
     <ClInclude Include="team.h" />

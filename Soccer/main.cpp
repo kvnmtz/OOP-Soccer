@@ -1,12 +1,15 @@
 #include <iostream>
 
 #include "field.h"
+#include "goalie.h"
 #include "player.h"
 #include "random.hpp"
 #include "team.h"
 
 int main()
 {
+    std::locale::global(std::locale("German_germany.UTF-8"));
+
     Random::Initialize();
 
     const auto field = new CField(130, 100);
@@ -25,8 +28,8 @@ int main()
     teams[0]->AddPlayer(new CPlayer("Goretzka", teams[0]));
     teams[0]->AddPlayer(new CPlayer("Tolisso", teams[0]));
     teams[0]->AddPlayer(new CPlayer("Sabitzer", teams[0]));
-    teams[0]->SetGoalie(new CPlayer("Neuer", teams[0]));
-
+    teams[0]->SetGoalie(new CGoalie("Neuer", teams[0]));
+    
     teams[1]->AddPlayer(new CPlayer("Haaland", teams[1]));
     teams[1]->AddPlayer(new CPlayer("Reus", teams[1]));
     teams[1]->AddPlayer(new CPlayer("Adeyemi", teams[1]));
@@ -37,13 +40,9 @@ int main()
     teams[1]->AddPlayer(new CPlayer("Malen", teams[1]));
     teams[1]->AddPlayer(new CPlayer("Hummels", teams[1]));
     teams[1]->AddPlayer(new CPlayer("Schmelzer", teams[1]));
-    teams[1]->SetGoalie(new CPlayer("Kobel", teams[1]));
+    teams[1]->SetGoalie(new CGoalie("Kobel", teams[1]));
 
-    const auto test = teams[0]->GetPlayers()[5];
-    std::cout << test->GetName() << std::endl;
-    std::cout << test->GetPosition().X << ", " << test->GetPosition().Y << std::endl;
-    std::cout << test->GetNearestAlly()->GetName() << std::endl;
-    std::cout << test->GetNearestAlly()->GetPosition().X << ", " << test->GetNearestAlly()->GetPosition().Y << std::endl;
+    field->PlayGame();
 
     for (const auto team : teams)
     {

@@ -1,6 +1,12 @@
 #include "team.h"
 
+#include <iostream>
 #include <utility>
+
+#include "field.h"
+#include "random.hpp"
+
+class CGoalie;
 
 CTeam::CTeam(std::string name, CField* field) : Name(std::move(name)), Field(field)
 {
@@ -21,12 +27,12 @@ void CTeam::AddPlayer(CPlayer* player)
     Players.emplace_back(player);
 }
 
-CPlayer* CTeam::GetGoalie() const
+CGoalie* CTeam::GetGoalie() const
 {
     return Goalie;
 }
 
-void CTeam::SetGoalie(CPlayer* player)
+void CTeam::SetGoalie(CGoalie* player)
 {
     Goalie = player;
 }
@@ -34,4 +40,21 @@ void CTeam::SetGoalie(CPlayer* player)
 CField* CTeam::GetField() const
 {
     return Field;
+}
+
+int CTeam::GetGoals() const
+{
+    return Goals;
+}
+
+void CTeam::AddGoal()
+{
+    Goals++;
+    std::cout << "Punktestand: " << Field->GetTeams()[0]->GetName() << " " << Field->GetTeams()[0]->GetGoals() << ":" << Field->GetTeams()[1]->GetGoals() << " " << Field->GetTeams()[1]->GetName() << std::endl;
+}
+
+CPlayer* CTeam::GetRandomPlayerOnField() const
+{
+    const int player = Random::GetRandomNumber(0, 9);
+    return Players[player];
 }

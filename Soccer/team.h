@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 
+class CGoalie;
 class CField;
 class CPlayer;
 
@@ -10,8 +11,9 @@ class CTeam
 {
     std::string Name;
     std::vector<CPlayer*> Players;
-    CPlayer* Goalie;
+    CGoalie* Goalie = nullptr;
     CField* Field;
+    int Goals = 0;
 
 public:
     CTeam(std::string name, CField* field);
@@ -22,9 +24,15 @@ public:
 
     void AddPlayer(CPlayer* player);
 
-    CPlayer* GetGoalie() const;
+    CGoalie* GetGoalie() const;
 
-    void SetGoalie(CPlayer* player);
+    void SetGoalie(CGoalie* player);
 
     CField* GetField() const;
+
+    int GetGoals() const;
+    
+    void AddGoal();
+
+    CPlayer* GetRandomPlayerOnField() const;
 };

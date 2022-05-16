@@ -11,6 +11,9 @@
     <ClCompile Include="team.cpp">
       <Filter>team</Filter>
     </ClCompile>
+    <ClCompile Include="goalie.cpp">
+      <Filter>goalie</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="field">
@@ -25,6 +28,9 @@
     <Filter Include="team">
       <UniqueIdentifier>{5d7df7dd-7071-415e-8f98-920e8e89e88e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="goalie">
+      <UniqueIdentifier>{beeaad01-1d92-4b1d-9720-1372599dd8e0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="field.h">
@@ -38,6 +44,9 @@
     </ClInclude>
     <ClInclude Include="team.h">
       <Filter>team</Filter>
+    </ClInclude>
+    <ClInclude Include="goalie.h">
+      <Filter>goalie</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

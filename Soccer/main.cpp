@@ -36,20 +36,20 @@ int main()
     teams[1]->AddPlayer(new CPlayer("Schmelzer", teams[1]));
     teams[1]->SetGoalie(new CPlayer("Kobel", teams[1]));
 
-	const auto test = teams[0]->GetPlayers()[5];
+    const auto test = teams[0]->GetPlayers()[5];
     std::cout << test->GetName() << std::endl;
     std::cout << test->GetPosition().X << ", " << test->GetPosition().Y << std::endl;
     std::cout << test->GetNearestAlly()->GetName() << std::endl;
     std::cout << test->GetNearestAlly()->GetPosition().X << ", " << test->GetNearestAlly()->GetPosition().Y << std::endl;
 
-	for (const auto team : teams)
-	{
-		for (const auto player : team->GetPlayers())
-		{
+    for (const auto team : teams)
+    {
+        for (const auto player : team->GetPlayers())
+        {
             delete player;
-		}
+        }
         delete team;
-	}
+    }
 
     delete field;
 }

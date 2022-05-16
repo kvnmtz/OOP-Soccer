@@ -2,7 +2,7 @@
 #include <string>
 
 /*-----------------------------------------------------------------------------
-	Spieler
+    Spieler
 -----------------------------------------------------------------------------*/
 
 class CField;
@@ -10,37 +10,37 @@ class CTeam;
 
 struct SPosition
 {
-	int X, Y;
+    int X, Y;
 };
 
 class CPlayer
 {
-	std::string Name;
-	SPosition Position{};
-	CTeam* Team;
+    std::string Name;
+    SPosition Position{};
+    CTeam* Team;
 
 public:
-	CPlayer(std::string name, CTeam* team);
+    CPlayer(std::string name, CTeam* team);
 
-	/**
-	 * \brief Passt den Ball zu einem Mitspieler im selben Team, Pass wird mit Wahrscheinlichkeit von 30% von einem zufälligem Gegner abgefangen
-	 * \param target Spieler, der den Ball erhalten soll
-	 */
-	void Pass(const CPlayer& target);
+    /**
+     * \brief Passt den Ball zu einem Mitspieler im selben Team, Pass wird mit Wahrscheinlichkeit von 30% von einem zufälligem Gegner abgefangen
+     * \param target Spieler, der den Ball erhalten soll
+     */
+    void Pass(const CPlayer& target);
 
-	std::string GetName();
+    std::string GetName();
 
-	SPosition GetPosition() const;
+    SPosition GetPosition() const;
 
-	CTeam* GetTeam() const;
+    CTeam* GetTeam() const;
 
-	CTeam* GetEnemyTeam() const;
+    CTeam* GetEnemyTeam() const;
 
-	CField* GetField() const;
+    CField* GetField() const;
 
-	CPlayer* GetNearestAlly();
+    CPlayer* GetNearestAlly();
 
-	float GetDistanceToPlayer(const CPlayer* player) const;
-	
-	bool TryShootGoal();
+    float GetDistanceToPlayer(const CPlayer* player) const;
+    
+    bool TryShootGoal();
 };

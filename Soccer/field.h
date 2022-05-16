@@ -3,7 +3,7 @@
 #include <vector>
 
 /*-----------------------------------------------------------------------------
-	Spielfeld
+    Spielfeld
 -----------------------------------------------------------------------------*/
 
 class CTeam;
@@ -11,28 +11,28 @@ class CPlayer;
 
 class CField
 {
-	int Width, Height;
-	std::vector<CTeam*> Teams;
-	CPlayer* PlayerWithBall;
+    int Width, Height;
+    std::vector<CTeam*> Teams;
+    CPlayer* PlayerWithBall;
 
 public:
-	CField(int width, int height);
+    CField(int width, int height);
 
-	int GetWidth() const;
+    int GetWidth() const;
 
-	int GetHeight() const;
+    int GetHeight() const;
 
-	std::vector<CTeam*>& GetTeams();
+    std::vector<CTeam*>& GetTeams();
 
-	void AddTeam(CTeam* team);
+    void AddTeam(CTeam* team);
 
-	/**
-	 * \param team Das verbündete Team
-	 * \return Das Gegnerteam
-	 */
-	CTeam* GetEnemyTeam(CTeam* team) const;
+    /**
+     * \param team Das verbündete Team
+     * \return Das Gegnerteam
+     */
+    CTeam* GetEnemyTeam(CTeam* team) const;
 
-	CPlayer* GetPlayerWithBall() const;
+    CPlayer* GetPlayerWithBall() const;
 
-	void SetPlayerWithBall(CPlayer* player);
+    void SetPlayerWithBall(CPlayer* player);
 };

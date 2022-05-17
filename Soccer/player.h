@@ -1,5 +1,17 @@
 #pragma once
+
 #include <string>
+
+/*-----------------------------------------------------------------------------
+    Forward-declarations
+    
+    Wozu? Um Cyclic-references zu vermeiden. Ohne Forward-declarations
+    müssten wir #include "team.h" und in team.h #include "player.h"
+    benutzen. Also würden sich player.h und team.h gegenseitig includen
+    und der Compiler würde elend jammern. Forward-declarations lösen genau
+    dieses Problem und deklarieren die Klassen ohne die gesamte Datei
+    einzubinden.
+-----------------------------------------------------------------------------*/
 
 class CField;
 class CTeam;

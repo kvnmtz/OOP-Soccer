@@ -3,6 +3,10 @@
 #include <string>
 #include <vector>
 
+/*-----------------------------------------------------------------------------
+    Forward-declarations (sh. player.h für Erklärung)
+-----------------------------------------------------------------------------*/
+
 class CGoalie;
 class CField;
 class CPlayer;

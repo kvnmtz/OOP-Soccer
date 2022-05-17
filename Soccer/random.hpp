@@ -1,6 +1,10 @@
 #pragma once
-#include <cstdlib>
+
 #include <ctime>
+
+/*-----------------------------------------------------------------------------
+    Utility-Namespace für Zufallszahlen
+-----------------------------------------------------------------------------*/
 
 namespace Random
 {
@@ -30,5 +34,4 @@ namespace Random
     {
         return GetRandomNumber(1, 100) <= probability;
     }
-
 }

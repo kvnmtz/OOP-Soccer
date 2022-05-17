@@ -9,6 +9,7 @@
 
 CPlayer::CPlayer(std::string name, CTeam* team) : Name(std::move(name)), Team(team)
 {
+    /* Generiere eine zufällige Position auf dem Feld */
     Position = { Random::GetRandomNumber(0, GetField()->GetWidth()), Random::GetRandomNumber(0, GetField()->GetHeight()) };
 }
 

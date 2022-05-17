@@ -24,6 +24,10 @@ std::vector<CPlayer*> CTeam::GetPlayers() const
 
 void CTeam::AddPlayer(CPlayer* player)
 {
+    /* Maximal 10 Spieler in einem Team */
+    if (Players.size() == 10)
+        return;
+
     Players.emplace_back(player);
 }
 

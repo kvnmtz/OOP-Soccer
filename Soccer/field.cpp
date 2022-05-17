@@ -6,18 +6,18 @@
 #include "random.hpp"
 #include "team.h"
 
-CField::CField(const int width, const int height) : Width(width), Height(height)
+CField::CField(const int width, const int height) : Length(width), Width(height)
 {
 }
 
 int CField::GetWidth() const
 {
-    return Width;
+    return Length;
 }
 
 int CField::GetHeight() const
 {
-    return Height;
+    return Width;
 }
 
 std::vector<CTeam*>& CField::GetTeams()
@@ -27,6 +27,10 @@ std::vector<CTeam*>& CField::GetTeams()
 
 void CField::AddTeam(CTeam* team)
 {
+    /* Maximal 2 Teams */
+    if (Teams.size() == 2)
+        return;
+
     Teams.emplace_back(team);
 }
 
@@ -59,14 +63,17 @@ CPlayer* CField::GetRandomPlayerOnField() const
 
 void CField::PlayGame()
 {
+    /* Anfangs einem zufälligem Spieler den Ball geben */
     SetPlayerWithBall(GetRandomPlayerOnField());
 
-    /* Solange kein Team 10 Tore hat ... */
+    /* Solang kein Team 10 Tore hat ... */
     while (Teams[0]->GetGoals() < 10 && Teams[1]->GetGoals() < 10)
     {
+        /* Berechne Spielzug des Spielers, der gerade Ballbesitz hat */
         GetPlayerWithBall()->Play();
     }
 
+    /* Gewinner festlegen und ausgeben */
     const auto winner = Teams[0]->GetGoals() == 10 ? Teams[0] : Teams[1];
     std::cout << winner->GetName() << " hat das Spiel gewonnen!" << std::endl;
 }

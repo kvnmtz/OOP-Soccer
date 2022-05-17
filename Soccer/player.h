@@ -1,22 +1,29 @@
 #pragma once
 #include <string>
 
-/*-----------------------------------------------------------------------------
-    Spieler
------------------------------------------------------------------------------*/
-
 class CField;
 class CTeam;
+
+/*-----------------------------------------------------------------------------
+    Position
+-----------------------------------------------------------------------------*/
 
 struct SPosition
 {
     int X, Y;
 };
 
+/*-----------------------------------------------------------------------------
+    Spieler
+-----------------------------------------------------------------------------*/
+
 class CPlayer
 {
+    /* Name des Spielers */
     std::string Name;
-    SPosition Position{};
+    /* Position des Spielers */
+    SPosition Position = { 0, 0 };
+    /* Team des Spielers */
     CTeam* Team;
 
 public:
@@ -34,15 +41,30 @@ public:
 
     CTeam* GetTeam() const;
 
+    /**
+     * \return Das gegnerische Team dieses Spielers
+     */
     CTeam* GetEnemyTeam() const;
 
     CField* GetField() const;
 
+    /**
+     * \return Den Spieler mit der geringsten Entfernung zu diesem Spieler
+     */
     CPlayer* GetNearestAlly();
 
+    /**
+     * \return Die Entfernung zwischen diesem Spieler und dem angegebenen Spieler
+     */
     float GetDistanceToPlayer(const CPlayer* player) const;
-    
+
+    /**
+     * \brief Versucht einen Torschuss (20% Chance auf Treffer, dann aber 75% Chance dafür, dass der Torwart den Ball hält)
+     */
     void TryShootGoal() const;
 
+    /**
+     * \brief Berechnet einen Spielzug
+     */
     void Play();
 };

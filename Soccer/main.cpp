@@ -8,10 +8,12 @@
 
 int main()
 {
+    /* Macht es möglich, Umlaute korrekt in der Konsole auszugeben */
     std::locale::global(std::locale("German_germany.UTF-8"));
-
+    
     Random::Initialize();
 
+    /* Feld, Teams und Spieler initialisieren */
     const auto field = new CField(130, 100);
     field->AddTeam(new CTeam("FC Bayern München", field));
     field->AddTeam(new CTeam("Borussia Dortmund", field));
@@ -42,8 +44,10 @@ int main()
     teams[1]->AddPlayer(new CPlayer("Schmelzer", teams[1]));
     teams[1]->SetGoalie(new CGoalie("Kobel", teams[1]));
 
+    /* Starte die Berechnungen für das Spiel */
     field->PlayGame();
 
+    /* Cleanup */
     for (const auto team : teams)
     {
         for (const auto player : team->GetPlayers())
@@ -52,6 +56,5 @@ int main()
         }
         delete team;
     }
-
     delete field;
 }

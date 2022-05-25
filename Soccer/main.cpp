@@ -15,39 +15,40 @@ int main()
 
     /* Feld, Teams und Spieler initialisieren */
     const auto field = new CField(130, 100);
-    field->AddTeam(new CTeam("FC Bayern München", field));
-    field->AddTeam(new CTeam("Borussia Dortmund", field));
+    const auto fcb = new CTeam("FC Bayern München", field);
+    const auto bvb = new CTeam("Borussia Dortmund", field);
+    field->AddTeam(fcb);
+    field->AddTeam(bvb);
 
-    const auto teams = field->GetTeams();
-
-    teams[0]->AddPlayer(new CPlayer("Lewandowski", teams[0]));
-    teams[0]->AddPlayer(new CPlayer("Müller", teams[0]));
-    teams[0]->AddPlayer(new CPlayer("Gnabry", teams[0]));
-    teams[0]->AddPlayer(new CPlayer("Kimmich", teams[0]));
-    teams[0]->AddPlayer(new CPlayer("Davies", teams[0]));
-    teams[0]->AddPlayer(new CPlayer("Coman", teams[0]));
-    teams[0]->AddPlayer(new CPlayer("Musiala", teams[0]));
-    teams[0]->AddPlayer(new CPlayer("Goretzka", teams[0]));
-    teams[0]->AddPlayer(new CPlayer("Tolisso", teams[0]));
-    teams[0]->AddPlayer(new CPlayer("Sabitzer", teams[0]));
-    teams[0]->SetGoalie(new CGoalie("Neuer", teams[0]));
+    fcb->AddPlayer(new CPlayer("Lewandowski", fcb));
+    fcb->AddPlayer(new CPlayer("Müller", fcb));
+    fcb->AddPlayer(new CPlayer("Gnabry", fcb));
+    fcb->AddPlayer(new CPlayer("Kimmich", fcb));
+    fcb->AddPlayer(new CPlayer("Davies", fcb));
+    fcb->AddPlayer(new CPlayer("Coman", fcb));
+    fcb->AddPlayer(new CPlayer("Musiala", fcb));
+    fcb->AddPlayer(new CPlayer("Goretzka", fcb));
+    fcb->AddPlayer(new CPlayer("Tolisso", fcb));
+    fcb->AddPlayer(new CPlayer("Sabitzer", fcb));
+    fcb->SetGoalie(new CGoalie("Neuer", fcb));
     
-    teams[1]->AddPlayer(new CPlayer("Haaland", teams[1]));
-    teams[1]->AddPlayer(new CPlayer("Reus", teams[1]));
-    teams[1]->AddPlayer(new CPlayer("Adeyemi", teams[1]));
-    teams[1]->AddPlayer(new CPlayer("Bellingham", teams[1]));
-    teams[1]->AddPlayer(new CPlayer("Reyna", teams[1]));
-    teams[1]->AddPlayer(new CPlayer("Moukoko", teams[1]));
-    teams[1]->AddPlayer(new CPlayer("Brandt", teams[1]));
-    teams[1]->AddPlayer(new CPlayer("Malen", teams[1]));
-    teams[1]->AddPlayer(new CPlayer("Hummels", teams[1]));
-    teams[1]->AddPlayer(new CPlayer("Schmelzer", teams[1]));
-    teams[1]->SetGoalie(new CGoalie("Kobel", teams[1]));
+    bvb->AddPlayer(new CPlayer("Haaland", bvb));
+    bvb->AddPlayer(new CPlayer("Reus", bvb));
+    bvb->AddPlayer(new CPlayer("Adeyemi", bvb));
+    bvb->AddPlayer(new CPlayer("Bellingham", bvb));
+    bvb->AddPlayer(new CPlayer("Reyna", bvb));
+    bvb->AddPlayer(new CPlayer("Moukoko", bvb));
+    bvb->AddPlayer(new CPlayer("Brandt", bvb));
+    bvb->AddPlayer(new CPlayer("Malen", bvb));
+    bvb->AddPlayer(new CPlayer("Hummels", bvb));
+    bvb->AddPlayer(new CPlayer("Schmelzer", bvb));
+    bvb->SetGoalie(new CGoalie("Kobel", bvb));
 
     /* Starte die Berechnungen für das Spiel */
     field->PlayGame();
 
     /* Cleanup */
+    const auto& teams = field->GetTeams();
     for (const auto team : teams)
     {
         for (const auto player : team->GetPlayers())

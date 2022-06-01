@@ -11,6 +11,11 @@ CPlayer::CPlayer(std::string name, CTeam* team) : Name(std::move(name)), Team(te
 {
     /* Generiere eine zufällige Position auf dem Feld */
     Position = { Random::GetRandomNumber(0, GetField()->GetWidth()), Random::GetRandomNumber(0, GetField()->GetHeight()) };
+    /* Solange diese Position schon belegt wird, eine neue Position generieren bis eine freie gefunden wurde */
+    while (!IsPositionUnique())
+    {
+        Position = { Random::GetRandomNumber(0, GetField()->GetWidth()), Random::GetRandomNumber(0, GetField()->GetHeight()) };
+    }
 }
 
 void CPlayer::TryPass(const CPlayer* target)
@@ -121,4 +126,25 @@ void CPlayer::Play()
     {
         TryShootGoal();
     }
+}
+
+bool CPlayer::IsPositionUnique()
+{
+    for (const auto curTeam : GetTeam()->GetField()->GetTeams())
+    {
+        for (const auto curPlayer : curTeam->GetPlayers())
+        {
+            if (curPlayer == this)
+                continue;
+
+            if (curPlayer->GetPosition().X == GetPosition().X && curPlayer->GetPosition().Y == GetPosition().Y)
+            {
+                /* Irgendein Spieler hat die selbe Position wie dieser Spieler */
+                return false;
+            }
+        }
+    }
+
+    /* Kein Spieler hat die selbe Position wie dieser Spieler */
+    return true;
 }

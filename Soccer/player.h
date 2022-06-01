@@ -79,4 +79,9 @@ public:
      * \brief Berechnet einen Spielzug
      */
     void Play();
+
+    /**
+     * \return Ob die aktuelle Position des Spielers von einem anderen Spieler auf dem Feld geteilt wird
+     */
+    bool IsPositionUnique();
 };

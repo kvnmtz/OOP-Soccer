@@ -17,7 +17,7 @@ std::string CTeam::GetName()
     return Name;
 }
 
-std::vector<CPlayer*> CTeam::GetPlayers() const
+std::vector<CPlayer*>& CTeam::GetPlayers()
 {
     return Players;
 }

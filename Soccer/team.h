@@ -33,7 +33,7 @@ public:
 
     std::string GetName();
 
-    std::vector<CPlayer*> GetPlayers() const;
+    std::vector<CPlayer*>& GetPlayers();
 
     /**
      * \brief Fügt dem Team den angegebenen Spieler hinzu

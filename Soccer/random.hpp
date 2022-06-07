@@ -23,7 +23,7 @@ namespace Random
      */
     inline int GetRandomNumber(const int min, const int max)
     {
-        return rand() % max + min;
+        return rand() % (max + 1) + min;
     }
 
     /**
